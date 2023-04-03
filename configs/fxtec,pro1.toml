@@ -1,0 +1,30 @@
+[juicer]
+firmware = [
+    { partition = "vendor", origin = "firmware", destination = "qcom/msm8998/fxtec", files = [
+            { name = "a540_zap.mdt" },
+            { name = "ipa_fws.mdt" },
+        ] },
+    { partition = "vendor", origin = "firmware", destination = "qcom", files = [
+            { name = "a530_pfp.fw" },
+            { name = "a530_pm4.fw" },
+            { name = "a540_gpmu.fw2" },
+        ] },
+    { partition = "modem", origin = "image", destination = "qcom/msm8998/fxtec", files = [
+            { name = "adsp.mdt" },
+            { name = "adspr.jsn" },
+            { name = "adspua.jsn" },
+            { name = "mba.mbn" },
+            { name = "modem.mdt" },
+            { name = "modemr.jsn" },
+            { name = "modemuw.jsn" },
+            { name = "slpi_v2.mdt" },
+            { name = "slpir.jsn" },
+            { name = "slpius.jsn" },
+            { name = "venus.mdt" },
+            { name = "wlanmdsp.mbn" },
+        ] },
+    { partition = "bluetooth", origin = "image", destination = "qca", files = [
+            { name = "crbtfw21.tlv" },
+            { name = "crnv21.bin" },
+        ] },
+]
