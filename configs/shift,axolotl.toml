@@ -1,11 +1,11 @@
 [juicer]
 dynpart = "super"
 firmware = [
-    { partition = "vendor", origin = "firmware", destination = "qcom/sdm845/axolotl", files = [
+    { partition = "vendor", origin = "firmware", destination = "qcom/sdm845/SHIFT/axolotl", compat = ["qcom/sdm845/axolotl"], files = [
             { name = "a630_zap.mdt" },
             { name = "ipa_fws.mdt" },
         ] },
-    { partition = "modem", origin = "image", destination = "qcom/sdm845/axolotl", files = [
+    { partition = "modem", origin = "image", destination = "qcom/sdm845/SHIFT/axolotl", compat = ["qcom/sdm845/axolotl"], files = [
             { name = "adsp.mdt" },
             { name = "adspr.jsn" },
             { name = "adspua.jsn" },
@@ -21,7 +21,7 @@ firmware = [
             { name = "venus.mdt" },
             { name = "wlanmdsp.mbn" },
         ] },
-    { partition = "bluetooth", origin = "image", destination = "qca/axolotl", files = [
+    { partition = "bluetooth", origin = "image", destination = "qca/SHIFT/axolotl", compat = ["qca/axolotl"], files = [
             { name = "crnv21.bin" },
         ] },
     { partition = "bluetooth", origin = "image", destination = "qca", files = [
