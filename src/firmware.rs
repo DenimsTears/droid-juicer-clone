@@ -60,6 +60,7 @@ pub struct FwConfig {
     partition: String,
     origin: String,
     destination: String,
+    compat: Option<Vec<String>>,
     files: Vec<FwFile>,
 }
 
@@ -89,6 +90,7 @@ pub struct Config {
 pub struct Status {
     pub files: Vec<String>,
     pub folders: Option<Vec<String>>,
+    pub symlinks: Option<Vec<String>>,
 }
 
 fn mount_part(part: &str, mountpath: &PathBuf) -> Result<Mount, Error> {
@@ -231,6 +233,7 @@ fn map_dynpart(part: &str) -> Result<(), Error> {
 pub fn process(config: Config, extract_path: &String) -> Result<Status, Error> {
     let mut files: Vec<String> = Vec::new();
     let mut folders: Option<Vec<String>> = None;
+    let mut symlinks: Vec<String> = Vec::new();
 
     // Map the "super" partition if we expect one
     if let Some(part) = config.dynpart {
@@ -332,6 +335,56 @@ pub fn process(config: Config, extract_path: &String) -> Result<Status, Error> {
         }
 
         let _r = fs::remove_dir(mntpath);
+
+        // Create compatibility symlinks for downstream kernels
+        if let Some(compat_paths) = &entry.compat {
+            for old_dest in compat_paths {
+                let old_path = PathBuf::from(extract_path).join(old_dest);
+                if old_path.exists() {
+                    debug!(
+                        "Compat path {} already exists, skipping symlink",
+                        old_path.display()
+                    );
+                    continue;
+                }
+                if let Some(parent) = old_path.parent() {
+                    if let Err(e) = fs::create_dir_all(parent) {
+                        warn!(
+                            "Unable to create parent directory {}: {}",
+                            parent.display(),
+                            e
+                        );
+                        continue;
+                    }
+                }
+                let rel_target = match pathdiff::diff_paths(&destpath, old_path.parent().unwrap()) {
+                    Some(p) => p,
+                    None => {
+                        warn!(
+                            "Unable to compute relative path from {} to {}",
+                            old_path.display(),
+                            destpath.display()
+                        );
+                        continue;
+                    }
+                };
+                debug!(
+                    "Creating compat symlink {} -> {}",
+                    old_path.display(),
+                    rel_target.display()
+                );
+                if let Err(e) = std::os::unix::fs::symlink(&rel_target, &old_path) {
+                    warn!(
+                        "Unable to create symlink {} -> {}: {}",
+                        old_path.display(),
+                        rel_target.display(),
+                        e
+                    );
+                } else {
+                    symlinks.push(format!("{}", old_path.display()));
+                }
+            }
+        }
     }
 
     if let Some(dirs) = config.folders {
@@ -428,5 +481,13 @@ pub fn process(config: Config, extract_path: &String) -> Result<Status, Error> {
         }
     }
 
-    Ok(Status { files, folders })
+    Ok(Status {
+        files,
+        folders,
+        symlinks: if symlinks.is_empty() {
+            None
+        } else {
+            Some(symlinks)
+        },
+    })
 }
