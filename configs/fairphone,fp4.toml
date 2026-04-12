@@ -9,6 +9,11 @@ firmware = [
             { name = "a615_zap.mdt" },
             { name = "lagoon_ipa_fws.mdt", rename = "ipa_fws.mdt" },
         ] },
+    { partition = "vendor", origin = "firmware", destination = ".", files = [
+            { name = "aw882xx_monitor.bin" },
+            { name = "aw882xx_spk_reg_l.bin" },
+            { name = "aw882xx_spk_reg_r.bin" },
+        ] },
     { partition = "modem", origin = "image", destination = "qcom/sm7225/fairphone4", files = [
             { name = "adsp.mdt" },
             { name = "adspr.jsn" },
