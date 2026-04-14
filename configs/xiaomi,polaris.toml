@@ -1,13 +1,13 @@
 [juicer]
 firmware = [
-    { partition = "vendor", origin = "firmware", destination = "qcom/sdm845/polaris", files = [
+    { partition = "vendor", origin = "firmware", destination = "qcom/sdm845/Xiaomi/polaris", compat = ["qcom/sdm845/polaris"], files = [
             { name = "a630_zap.mdt" },
             { name = "ipa_fws.mdt" },
         ] },
     { partition = "vendor", origin = "firmware", destination = "", files = [
             { name = "tas2559_uCDSP.bin" },
         ] },
-    { partition = "modem", origin = "image", destination = "qcom/sdm845/polaris", files = [
+    { partition = "modem", origin = "image", destination = "qcom/sdm845/Xiaomi/polaris", compat = ["qcom/sdm845/polaris"], files = [
             { name = "adsp.mdt" },
             { name = "adspr.jsn" },
             { name = "adspua.jsn" },
@@ -23,7 +23,7 @@ firmware = [
             { name = "venus.mdt" },
             { name = "wlanmdsp.mbn" },
         ] },
-    { partition = "bluetooth", origin = "image", destination = "qca/polaris", files = [
+    { partition = "bluetooth", origin = "image", destination = "qca/Xiaomi/polaris", compat = ["qca/polaris"], files = [
             { name = "crnv21.bin" },
         ] },
     { partition = "bluetooth", origin = "image", destination = "qca", files = [

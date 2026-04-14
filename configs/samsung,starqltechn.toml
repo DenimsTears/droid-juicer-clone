@@ -1,6 +1,6 @@
 [juicer]
 firmware = [
-    { partition = "apnhlos", origin = "image", destination = "qcom/sdm845/starqltechn", files = [
+    { partition = "apnhlos", origin = "image", destination = "qcom/sdm845/Samsung/starqltechn", compat = ["qcom/sdm845/starqltechn"], files = [
             { name = "a630_zap.mdt" },
             { name = "ipa_fws.mdt" },
             { name = "cdsp.mdt" },
@@ -10,7 +10,7 @@ firmware = [
             { name = "slpius.jsn" },
             { name = "venus.mdt" },
         ] },
-    { partition = "modem", origin = "image", destination = "qcom/sdm845/starqltechn", files = [
+    { partition = "modem", origin = "image", destination = "qcom/sdm845/Samsung/starqltechn", compat = ["qcom/sdm845/starqltechn"], files = [
             { name = "adsp.mdt" },
             { name = "adspr.jsn" },
             { name = "adspua.jsn" },

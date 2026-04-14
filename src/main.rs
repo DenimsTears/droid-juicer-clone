@@ -130,6 +130,11 @@ fn main() -> Result<(), Error> {
                 Err(e) => return Err(Error::other(e)),
             };
 
+            if let Some(links) = status.symlinks {
+                if let Err(e) = fs_extra::remove_items(&links) {
+                    warn!("Unable to remove symlinks: {e}");
+                }
+            }
             if let Err(e) = fs_extra::remove_items(&status.files) {
                 warn!("Unable to remove files: {e}");
             }
