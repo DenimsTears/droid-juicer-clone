@@ -31,4 +31,17 @@ firmware = [
             { name = "apnv11.bin" },
             { name = "apbtfw11.tlv" },
         ] },
+    { partition = "vendor", origin = "etc/sensors", destination = "/var/lib/droid-juicer/sensors/sensors", files = [
+            { name = "sns_reg_config", rename = "sns_reg.conf" },
+        ] },
+]
+folders = [
+    { partition = "vendor", destination = "/var/lib/droid-juicer/sensors", folders = [
+        { name = "dsp" },
+        { name = "etc/acdbdata", rename = "acdb" },
+        { name = "etc/sensors" },
+    ] },
+    { partition = "persist", destination = "/var/lib/droid-juicer/sensors", folders = [
+        { name = "sensors" },
+    ] },
 ]
