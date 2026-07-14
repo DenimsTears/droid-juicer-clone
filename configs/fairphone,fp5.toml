@@ -24,3 +24,8 @@ firmware = [
             { name = "msnv11.bin" },
         ] },
 ]
+folders = [
+    { partition = "modem", destination = "qcom/qcm6490/fairphone5", folders = [
+        { name = "image/modem_pr" },
+    ] },
+]
