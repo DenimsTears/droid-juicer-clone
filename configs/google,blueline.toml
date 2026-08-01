@@ -1,6 +1,6 @@
 [juicer]
 firmware = [
-    { partition = "vendor", origin = "firmware", destination = "qcom/sdm845/pixel3", files = [
+    { partition = "vendor", origin = "firmware", destination = "qcom/sdm845/Google/blueline", files = [
             { name = "a630_zap.mdt" },
             { name = "adsp.mdt" },
             { name = "adspr.jsn" },
@@ -13,7 +13,7 @@ firmware = [
             { name = "venus.mdt" },
             { name = "wlanmdsp.mbn" },
         ] },
-    { partition = "vendor", origin = "firmware", destination = "qca/pixel3", files = [
+    { partition = "vendor", origin = "firmware", destination = "qca/Google/blueline", files = [
             { name = "crnv21.bin" },
         ] },
     { partition = "vendor", origin = "firmware", destination = "qca", files = [
@@ -22,7 +22,7 @@ firmware = [
     { partition = "vendor", origin = "firmware", destination = "", files = [
             { name = "ftm5_fw.ftb" },
         ] },
-    { partition = "modem", origin = "image", destination = "qcom/sdm845/pixel3", files = [
+    { partition = "modem", origin = "image", destination = "qcom/sdm845/Google/blueline", files = [
             { name = "mba.mbn" },
             { name = "modem.mdt" },
             { name = "modemr.jsn" },
