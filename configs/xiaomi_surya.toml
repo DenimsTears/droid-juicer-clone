@@ -8,21 +8,21 @@ firmware = [
 #            { name = "ipa_fws.mdt" },
         ] },
 # Throws "Invalid argument" error when uncommented and called `sudo droid-juicer` after that, but the files themselves extracted successfully
-#     { partition = "modem", origin = "image", destination = "qcom/sm7150/xiaomi/surya", files = [
-#             { name = "adsp.mdt" },
-#             { name = "adspr.jsn" },
-#             { name = "adsps.jsn" },
-#             { name = "adspua.jsn" },
-#             { name = "cdsp.mdt" },
-#             { name = "cdspr.jsn" },
-#             { name = "modem.mdt" },
-#             { name = "modemr.jsn" },
-#             { name = "modemuw.jsn" },
-#             { name = "venus.mdt" },
-#             { name = "wlanmdsp.mbn" },
-#         ] },
-#     { partition = "bluetooth", origin = "image", destination = "qca", files = [
-#             { name = "crnv21.bin" },
-#             { name = "crbtfw21.tlv" },
-#         ] },
+    { partition = "modem", origin = "image", destination = "qcom/sm7150/xiaomi/surya", files = [
+            { name = "adsp.mdt" },
+            { name = "adspr.jsn" },
+            { name = "adsps.jsn" },
+            { name = "adspua.jsn" },
+            { name = "cdsp.mdt" },
+            { name = "cdspr.jsn" },
+            { name = "modem.mdt" },
+            { name = "modemr.jsn" },
+            { name = "modemuw.jsn" },
+            { name = "venus.mdt" },
+            { name = "wlanmdsp.mbn" },
+        ] },
+    { partition = "bluetooth", origin = "image", destination = "qca", files = [
+            { name = "crnv21.bin" },
+            { name = "crbtfw21.tlv" },
+        ] },
 ]
