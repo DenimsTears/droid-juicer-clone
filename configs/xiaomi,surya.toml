@@ -1,0 +1,28 @@
+[juicer]
+dynpart = "super"
+firmware = [
+    { partition = "vendor", origin = "firmware", destination = "qcom/sm7150/xiaomi/surya", files = [
+            { name = "a615_zap.mdt" },
+            { name = "novatek_ts_tianma_fw.bin" },
+# Having this firmware file in the rootfs makes the device crash during boot (that's fair in relation to the `davinci`; not sure about the `surya`, though)
+#            { name = "ipa_fws.mdt" },
+        ] },
+# Throws "Invalid argument" error when uncommented and called `sudo droid-juicer` after that, but the files themselves extracted successfully
+    { partition = "modem", origin = "image", destination = "qcom/sm7150/xiaomi/surya", files = [
+            { name = "adsp.mdt" },
+            { name = "adspr.jsn" },
+            { name = "adsps.jsn" },
+            { name = "adspua.jsn" },
+            { name = "cdsp.mdt" },
+            { name = "cdspr.jsn" },
+            { name = "modem.mdt" },
+            { name = "modemr.jsn" },
+            { name = "modemuw.jsn" },
+            { name = "venus.mdt" },
+            { name = "wlanmdsp.mbn" },
+        ] },
+    { partition = "bluetooth", origin = "image", destination = "qca", files = [
+            { name = "crnv21.bin" },
+            { name = "crbtfw21.tlv" },
+        ] },
+]
