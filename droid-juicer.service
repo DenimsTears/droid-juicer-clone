@@ -1,5 +1,7 @@
 [Unit]
 Description=Android vendor firmware extraction
+Wants=modprobe@vfat.service
+After=modprobe@vfat.service
 Wants=sysinit.target
 After=-.mount tmp.mount boot.mount
 Before=plymouth-quit.service display-manager.service
